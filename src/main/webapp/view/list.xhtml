@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="./WEB-INF/template.xhtml">
+
+    <ui:define name="body">
+        <h:form id="listForm">
+            <h:dataTable var="u" value="${usersList.users}" id="table">
+                <h:column>${u.id}</h:column>
+                <h:column>${u.name}</h:column>
+                <h:column>${u.age}</h:column>
+                <h:column>${u.address}</h:column>
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
