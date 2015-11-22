@@ -14,6 +14,7 @@
         <java.version>1.8</java.version>
         <version.plugin.compiler>3.1</version.plugin.compiler>
         <wildfly.swarm.version>1.0.0.Alpha5</wildfly.swarm.version>
+        <version.wildfly.bom>9.0.0.Beta2</version.wildfly.bom>
     </properties>
 
     <build>
@@ -51,13 +52,25 @@
         </plugins>
     </build>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>jboss-javaee-7.0-with-all</artifactId>
+                <version>${version.wildfly.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
-        <groupId>javax</groupId>
-        <artifactId>javaee-web-api</artifactId>
-        <version>7.0</version>
-        <scope>provided</scope>
-    </dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.wildfly.swarm</groupId>
             <artifactId>wildfly-swarm-undertow</artifactId>
@@ -66,6 +79,16 @@
         <dependency>
             <groupId>org.wildfly.swarm</groupId>
             <artifactId>wildfly-swarm-jsf</artifactId>
+            <version>${wildfly.swarm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>wildfly-swarm-jaxrs</artifactId>
+            <version>${wildfly.swarm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>wildfly-swarm-jaxrs-weld</artifactId>
             <version>${wildfly.swarm.version}</version>
         </dependency>
         <dependency>
@@ -83,6 +106,16 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.6</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson2-provider</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -9,8 +9,17 @@
 <ui:composition template="./WEB-INF/template.xhtml">
 
     <ui:define name="content">
-        <h:outputText value="#{message.say()}"/>
+        <h:form id="listForm">
+            <h:inputText value="#{dockerList.query}"/>
+            <h:commandButton value="Szukaj" action="#{dockerList.search}"/>
+            <h:dataTable var="u" value="#{dockerList.results}" id="table">
+                <h:column>${u.name}</h:column>
+                <h:column>${u.description}</h:column>
+            </h:dataTable>
+        </h:form>
     </ui:define>
+
+
 
 </ui:composition>
 
